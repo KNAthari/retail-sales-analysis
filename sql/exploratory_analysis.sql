@@ -33,5 +33,16 @@ FROM retail_sales
 GROUP BY 1
 ORDER BY 2 DESC 
 
+-- West monthly trends in profit, revenue and quantity sold --
+
+SELECT DATE_TRUNC('month', sale_date) AS month, 
+region, 
+SUM(sales_revenue) AS revenue,
+SUM(profit) AS profit,
+SUM(quantity) AS quantity
+FROM retail_sales
+GROUP BY 1, 2
+ORDER BY 1, 2 DESC
+
 
 
