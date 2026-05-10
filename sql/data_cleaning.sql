@@ -21,6 +21,7 @@ OR category = '?'
 UPDATE retail_sales
 SET region = 'Unknown'
 WHERE region IS NULL
+OR region = 'Nan'
 
 -- Find median for sales_revenue --
 SELECT category, percentile_cont(0.5) WITHIN GROUP (
