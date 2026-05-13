@@ -68,13 +68,27 @@ ORDER BY 1, 2 DESC
 SELECT category,
 SUM(sales_revenue) AS revenue,
 SUM(profit) AS profit,
-ROUND(SUM(sales_revenue)/SUM(profit), 2) AS profit_margin
+ROUND((SUM(profit)/SUM(sales_revenue)) * 100, 2) AS profit_margin
 FROM retail_sales
 GROUP BY 1
-ORDER BY 4 DESC 
+ORDER BY 4 DESC
+
+-- profit margins by region --
+SELECT region,
+ROUND((SUM(profit)/SUM(sales_revenue)) * 100, 2) AS profit_margin
+FROM retail_sales
+GROUP BY 1
+ORDER BY 2 DESC 
 
 -- Average profit and revenue by category --
 SELECT category,
+ROUND(AVG(profit), 2) AS average_profit,
+ROUND(AVG(sales_revenue), 2) AS average_revenue
+FROM retail_sales
+GROUP BY 1 
+
+-- Average profit and revenue by region --
+SELECT region,
 ROUND(AVG(profit), 2) AS average_profit,
 ROUND(AVG(sales_revenue), 2) AS average_revenue
 FROM retail_sales
