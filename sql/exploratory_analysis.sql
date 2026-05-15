@@ -82,14 +82,16 @@ ORDER BY 2 DESC
 
 -- Average profit and revenue by category --
 SELECT category,
+COUNT(*) AS transaction_count,
 ROUND(AVG(profit), 2) AS average_profit,
 ROUND(AVG(sales_revenue), 2) AS average_revenue
 FROM retail_sales
-GROUP BY 1 
+GROUP BY category
 
 -- Average profit and revenue by region --
 SELECT region,
+COUNT(*) AS transaction_count,
 ROUND(AVG(profit), 2) AS average_profit,
 ROUND(AVG(sales_revenue), 2) AS average_revenue
 FROM retail_sales
-GROUP BY 1 
+GROUP BY 1
